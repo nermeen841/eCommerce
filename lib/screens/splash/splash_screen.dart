@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:cupertino_icons/placeholder.txt';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:shop_app/constants.dart';
