@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/CacheHelper/mySharedPreference.dart';
 import 'package:shop_app/components/constans.dart';
 import 'package:shop_app/components/default_button.dart';
 import 'package:shop_app/constants.dart';
@@ -77,6 +78,7 @@ class _SettingBodyState extends State<SettingBody> {
                                               selectedVal = value;
                                               // ignore: deprecated_member_use
                                               context.locale = Locale("ar");
+                                              CacheHelper.saveLang("ar");
                                             });
                                             Navigator.pop(context);
                                           }),
@@ -91,6 +93,7 @@ class _SettingBodyState extends State<SettingBody> {
                                               selectedVal = value;
                                               // ignore: deprecated_member_use
                                               context.locale = Locale("en");
+                                              CacheHelper.saveLang("en");
                                             });
                                             Navigator.pop(context);
                                           }),

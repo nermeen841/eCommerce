@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_share/flutter_share.dart';
 import 'package:shop_app/constants.dart';
+import 'package:shop_app/screens/authnitication/sign_in/components/sign_form.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:html/parser.dart';
 
@@ -49,6 +50,22 @@ homeBottomSheet({BuildContext context, Widget child, ShapeBorder shapeBorder}) {
     context: context,
     builder: (context) => child,
   );
+}
+
+applang() {
+  switch (SignForm.lang) {
+    case "en":
+      {
+        return "en";
+      }
+      break;
+
+    case "ar":
+      {
+        return "ar";
+      }
+      break;
+  }
 }
 
 ///

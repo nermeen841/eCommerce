@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:shop_app/CacheHelper/mySharedPreference.dart';
 import 'package:shop_app/components/constans.dart';
 import 'package:shop_app/components/custom_surfix_icon.dart';
 import 'package:shop_app/components/default_button.dart';
@@ -14,6 +15,7 @@ import '../../../../size_config.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 class SignForm extends StatefulWidget {
+  static String lang;
   @override
   _SignFormState createState() => _SignFormState();
 }
@@ -39,6 +41,17 @@ class _SignFormState extends State<SignForm> {
       });
   }
 
+  getlang() async {
+    SignForm.lang = await CacheHelper.getLang();
+    return SignForm.lang;
+  }
+
+  @override
+  void initState() {
+    this.getlang();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -57,22 +70,25 @@ class _SignFormState extends State<SignForm> {
               children: [
                 Text(
                   LocalKeys.SKIPBUTTON.tr(),
-                  style:
-                      headingStyle.copyWith(color: kPrimaryColor, fontSize: 16),
+                  style: headingStyle.copyWith(
+                      color: kPrimaryColor,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600),
                 ),
                 spaceW(20),
-                SvgPicture.asset(
-                  "assets/icons/arrow_right.svg",
-                  width: 20,
-                  height: 20,
-                  color: kPrimaryColor,
-                ),
-                SvgPicture.asset(
-                  "assets/icons/arrow_right.svg",
-                  width: 20,
-                  height: 20,
-                  color: kPrimaryColor,
-                ),
+                (applang() == "en")
+                    ? SvgPicture.asset(
+                        "assets/icons/right-arrow-angle-of-two-shapes.svg",
+                        width: 20,
+                        height: 20,
+                        color: kPrimaryColor,
+                      )
+                    : SvgPicture.asset(
+                        "assets/icons/double-left-arrows-angles.svg",
+                        width: 20,
+                        height: 20,
+                        color: kPrimaryColor,
+                      ),
               ],
             ),
           ),

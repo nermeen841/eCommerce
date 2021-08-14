@@ -35,12 +35,19 @@ class SliverAppbar extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20)),
                     child: Row(
                       children: [
-                        SvgPicture.asset(
-                          "assets/icons/Back ICon.svg",
-                          width: 20,
-                          height: 20,
-                          color: Colors.black,
-                        ),
+                        (applang() == "en")
+                            ? SvgPicture.asset(
+                                "assets/icons/Back ICon.svg",
+                                width: 20,
+                                height: 20,
+                                color: Colors.black,
+                              )
+                            : SvgPicture.asset(
+                                "assets/icons/arrow_right.svg",
+                                width: 20,
+                                height: 20,
+                                color: Colors.black,
+                              ),
                         spaceW(10),
                         Text(LocalKeys.GOBACK.tr()),
                       ],

@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shop_app/CacheHelper/mySharedPreference.dart';
 import 'package:shop_app/routes.dart';
 import 'package:shop_app/screens/add_address/address_provider.dart';
 import 'package:shop_app/screens/splash/splash_screen.dart';
@@ -10,6 +11,7 @@ import 'generated/setup_local.dart';
 
 void main() async {
   //  setupLocator();
+
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
 
@@ -72,6 +74,7 @@ class _MyAppState extends State<MyApp> {
           if (deviceLocale.languageCode == supportedLocale.languageCode) {
             // ignore: deprecated_member_use
             context.locale = Locale("${deviceLocale.languageCode}");
+            CacheHelper.saveLang("${deviceLocale.languageCode}");
             return supportedLocale;
           }
         }
