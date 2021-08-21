@@ -22,7 +22,6 @@ class Body extends StatelessWidget {
                 Text(
                   LocalKeys.LOGINWELCOME.tr(),
                   style: TextStyle(
-                    color: Colors.black,
                     fontSize: getProportionateScreenWidth(28),
                     fontWeight: FontWeight.bold,
                   ),

@@ -10,8 +10,8 @@ class CodegenLoader extends AssetLoader {
   }
 
   static const Map<String, dynamic> ar = {
-    "introTitle": "تكنو شوب",
-    "intro1": "مرحبًا بكم في تكنو شوب دعنا نتسوق!",
+    "introTitle": "تكنو ستور",
+    "intro1": "مرحبًا بكم في تكنو ستور دعنا نتسوق!",
     "intro2":
         "نحن نساعد الأشخاص على الاتصال بمتجر حول الولايات المتحدة الأمريكية",
     "intro3": "نعرض لك الطريقة السهلة للتسوق. فقط ابق في المنزل معنا",
@@ -133,8 +133,8 @@ class CodegenLoader extends AssetLoader {
     "buildNum_error": "اكتب رقم المبنى الخاص بك"
   };
   static const Map<String, dynamic> en = {
-    "introTitle": "Tech Shop",
-    "intro1": "Welcome to Tech Shop, Let's shop !",
+    "introTitle": "Techno Store",
+    "intro1": "Welcome to Techno Store, Let's shop !",
     "intro2":
         "We help people conect with store\n around United State of America",
     "intro3": "We show the easy way to shop.\n Just stay at home with us",

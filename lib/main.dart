@@ -1,9 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app/CacheHelper/mySharedPreference.dart';
 import 'package:shop_app/routes.dart';
 import 'package:shop_app/screens/add_address/address_provider.dart';
+import 'package:shop_app/screens/app_cubit/appState.dart';
+import 'package:shop_app/screens/app_cubit/cubit.dart';
 import 'package:shop_app/screens/splash/splash_screen.dart';
 import 'package:shop_app/theme.dart';
 import 'generated/coden_loader.dart';
@@ -11,9 +14,10 @@ import 'generated/setup_local.dart';
 
 void main() async {
   //  setupLocator();
-
+  // Bloc.observer = MyBlocObserver();
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+  bool isDark = await CacheHelper.getAppMode();
 
   runApp(
     MultiProvider(
@@ -26,13 +30,19 @@ void main() async {
         supportedLocales: [Locale('en'), Locale('ar')],
         path: 'assets/lang', // <-- change patch to your
         assetLoader: CodegenLoader(),
-        child: MyApp(),
+        child: MyApp(
+          isDark: isDark,
+        ),
       ),
     ),
   );
 }
 
 class MyApp extends StatefulWidget {
+  final bool isDark;
+
+  const MyApp({Key key, this.isDark}) : super(key: key);
+
   // This widget is the root of your application.
   static void setLocale(BuildContext context, Locale newLocale) {
     _MyAppState state = context.findAncestorStateOfType<_MyAppState>();
@@ -67,30 +77,41 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     // ignore: unused_element
 
-    return MaterialApp(
-      // ignore: missing_return
-      localeResolutionCallback: (deviceLocale, supportedLocales) {
-        for (var supportedLocale in supportedLocales) {
-          if (deviceLocale.languageCode == supportedLocale.languageCode) {
-            // ignore: deprecated_member_use
-            context.locale = Locale("${deviceLocale.languageCode}");
-            CacheHelper.saveLang("${deviceLocale.languageCode}");
-            return supportedLocale;
-          }
-        }
-        return supportedLocales.first;
-      },
+    return BlocProvider(
+      create: (BuildContext context) =>
+          AppCubit()..changeAppThememode(fromShared: widget.isDark),
+      child: BlocConsumer<AppCubit, AppcubitStates>(
+        listener: (context, state) {},
+        builder: (context, state) {
+          return MaterialApp(
+            // ignore: missing_return
+            localeResolutionCallback: (deviceLocale, supportedLocales) {
+              for (var supportedLocale in supportedLocales) {
+                if (deviceLocale.languageCode == supportedLocale.languageCode) {
+                  // ignore: deprecated_member_use
+                  context.locale = Locale("${deviceLocale.languageCode}");
+                  CacheHelper.saveLang("${deviceLocale.languageCode}");
+                  return supportedLocale;
+                }
+              }
+              return supportedLocales.first;
+            },
 
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
+            localizationsDelegates: context.localizationDelegates,
+            supportedLocales: context.supportedLocales,
+            locale: context.locale,
 
-      debugShowCheckedModeBanner: false,
-
-      theme: theme(),
-      //  home: HomePage(),
-      initialRoute: SplashScreen.routeName,
-      routes: routes,
+            debugShowCheckedModeBanner: false,
+            darkTheme: darkTheme(),
+            theme: theme(),
+            themeMode:
+                AppCubit.get(context).isDark ? ThemeMode.dark : ThemeMode.light,
+            //  home: HomePage(),
+            initialRoute: SplashScreen.routeName,
+            routes: routes,
+          );
+        },
+      ),
     );
   }
 }

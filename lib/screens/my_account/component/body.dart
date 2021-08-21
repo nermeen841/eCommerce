@@ -60,7 +60,10 @@ class _MyAccountBodyState extends State<MyAccountBody> {
                       SizedBox(height: getProportionateScreenHeight(30)),
                       Text(
                         LocalKeys.GENDER.tr(),
-                        style: headingStyle.copyWith(fontSize: 16),
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText1
+                            .copyWith(fontSize: 16),
                       ),
                       SizedBox(height: getProportionateScreenHeight(10)),
                       Row(
@@ -68,7 +71,9 @@ class _MyAccountBodyState extends State<MyAccountBody> {
                           Expanded(
                             flex: 3,
                             child: RadioListTile(
-                                title: Text(LocalKeys.FEMALE.tr()),
+                                title: Text(LocalKeys.FEMALE.tr(),
+                                    style:
+                                        Theme.of(context).textTheme.bodyText1),
                                 activeColor: kPrimaryColor,
                                 value: LocalKeys.FEMALE.tr(),
                                 groupValue: gender,
@@ -82,7 +87,10 @@ class _MyAccountBodyState extends State<MyAccountBody> {
                             flex: 3,
                             child: RadioListTile(
                                 activeColor: kPrimaryColor,
-                                title: Text(LocalKeys.MALE.tr()),
+                                title: Text(
+                                  LocalKeys.MALE.tr(),
+                                  style: Theme.of(context).textTheme.bodyText1,
+                                ),
                                 value: LocalKeys.MALE.tr(),
                                 groupValue: gender,
                                 onChanged: (val) {
@@ -96,7 +104,10 @@ class _MyAccountBodyState extends State<MyAccountBody> {
                       SizedBox(height: getProportionateScreenHeight(20)),
                       Text(
                         LocalKeys.DATEOFBIRTH.tr(),
-                        style: headingStyle.copyWith(fontSize: 16),
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText1
+                            .copyWith(fontSize: 16),
                       ),
                       SizedBox(height: getProportionateScreenHeight(10)),
                       InkWell(
@@ -126,7 +137,7 @@ class _MyAccountBodyState extends State<MyAccountBody> {
                               vertical: 10, horizontal: 10),
                           width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            // color: Colors.white,
                             borderRadius: BorderRadius.circular(20),
                             border: Border.all(
                               color: Colors.grey,
@@ -135,8 +146,7 @@ class _MyAccountBodyState extends State<MyAccountBody> {
                           ),
                           child: Text(
                               (_chossenDate) ?? LocalKeys.DATEOFBIRTHHINT.tr(),
-                              style: subheadingStyle.copyWith(
-                                  color: Colors.blueGrey)),
+                              style: subheadingStyle),
                         ),
                       ),
                       SizedBox(height: getProportionateScreenHeight(20)),
@@ -179,8 +189,6 @@ class _MyAccountBodyState extends State<MyAccountBody> {
       decoration: InputDecoration(
         labelText: LocalKeys.PHONENUMLABEL.tr(),
         hintText: LocalKeys.PHONENUMHINT.tr(),
-        // If  you are using latest version of flutter then lable text and hint text shown like this
-        // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Phone.svg"),
       ),

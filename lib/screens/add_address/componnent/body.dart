@@ -9,7 +9,6 @@ import 'package:shop_app/screens/add_address/address_provider.dart';
 import 'package:shop_app/screens/home/components/user_location_container.dart';
 import 'package:shop_app/size_config.dart';
 import 'package:easy_localization/easy_localization.dart';
-import '../../../constants.dart';
 import '../address_card.dart';
 
 // ignore: must_be_immutable
@@ -125,7 +124,7 @@ class _AddressFormBodyState extends State<AddressFormBody> {
                   buildFlateFormField(),
                   SizedBox(height: getProportionateScreenHeight(30)),
                   DefaultButton(
-                    text: "Add Address",
+                    text: LocalKeys.ADDNEWADDRESS.tr(),
                     press: () {
                       if (_formKey.currentState.validate()) {
                         Navigator.pushNamed(
@@ -148,15 +147,15 @@ class _AddressFormBodyState extends State<AddressFormBody> {
       onSaved: (newValue) => home = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          removeError(error: kHomeErrorval);
+          removeError(error: LocalKeys.HOMEADDRESSEROR.tr());
         } else if (value.isNotEmpty) {
-          removeError(error: kHomeErrorval);
+          removeError(error: LocalKeys.HOMEADDRESSEROR.tr());
         }
         home = value;
       },
       validator: (value) {
         if (value.isEmpty) {
-          addError(error: kHomeErrorval);
+          addError(error: LocalKeys.HOMEADDRESSEROR.tr());
           return "";
         }
         return null;
@@ -178,15 +177,15 @@ class _AddressFormBodyState extends State<AddressFormBody> {
       onSaved: (newValue) => buldingNum = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          removeError(error: kbuildingNumErrorval);
+          removeError(error: LocalKeys.BUILDNUMERROR.tr());
         } else if (value.isNotEmpty) {
-          removeError(error: kbuildingNumErrorval);
+          removeError(error: LocalKeys.BUILDNUMERROR.tr());
         }
         buldingNum = value;
       },
       validator: (value) {
         if (value.isEmpty) {
-          addError(error: kbuildingNumErrorval);
+          addError(error: LocalKeys.BUILDNUMERROR.tr());
           return "";
         }
         return null;
@@ -208,15 +207,15 @@ class _AddressFormBodyState extends State<AddressFormBody> {
       onSaved: (newValue) => floor = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          removeError(error: kfloorErrorval);
+          removeError(error: LocalKeys.FLOOREMTY.tr());
         } else if (value.isNotEmpty) {
-          removeError(error: kfloorErrorval);
+          removeError(error: LocalKeys.FLOOREMTY.tr());
         }
         floor = value;
       },
       validator: (value) {
         if (value.isEmpty) {
-          addError(error: kfloorErrorval);
+          addError(error: LocalKeys.FLOOREMTY.tr());
           return "";
         }
         return null;
@@ -238,15 +237,15 @@ class _AddressFormBodyState extends State<AddressFormBody> {
       onSaved: (newValue) => flat = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          removeError(error: kflateErrorval);
+          removeError(error: LocalKeys.FLATERROR.tr());
         } else if (value.isNotEmpty) {
-          removeError(error: kflateErrorval);
+          removeError(error: LocalKeys.FLATERROR.tr());
         }
         flat = value;
       },
       validator: (value) {
         if (value.isEmpty) {
-          addError(error: kflateErrorval);
+          addError(error: LocalKeys.FLATERROR.tr());
           return "";
         }
         return null;

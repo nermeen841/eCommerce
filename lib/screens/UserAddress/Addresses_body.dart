@@ -29,10 +29,10 @@ class AddressesBody extends StatelessWidget {
               Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(
-                  height: 100,
+                  height: 70,
                   alignment: Alignment.bottomCenter,
                   padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                  color: Colors.white,
+                  color: Theme.of(context).scaffoldBackgroundColor,
                   child: DefaultButton(
                     text: LocalKeys.ADDNEWADDRESS.tr(),
                     press: () =>

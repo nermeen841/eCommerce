@@ -17,10 +17,11 @@ class RoundedIconBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: getProportionateScreenWidth(40),
-      width: getProportionateScreenWidth(40),
+      height: getProportionateScreenWidth(30),
+      width: getProportionateScreenWidth(30),
       decoration: BoxDecoration(
         shape: BoxShape.circle,
+        color: Theme.of(context).primaryColor,
         boxShadow: [
           if (showShadow)
             BoxShadow(
@@ -30,13 +31,17 @@ class RoundedIconBtn extends StatelessWidget {
             ),
         ],
       ),
+
       // ignore: deprecated_member_use
       child: FlatButton(
         padding: EdgeInsets.zero,
-        color: Colors.white,
+        color: Theme.of(context).primaryColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
         onPressed: press,
-        child: Icon(icon),
+        child: Icon(
+          icon,
+          color: Theme.of(context).cardColor,
+        ),
       ),
     );
   }

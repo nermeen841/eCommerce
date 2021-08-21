@@ -78,6 +78,7 @@ class _BodyState extends State<Body> {
                       children: [
                         Container(
                             height: 200,
+                            color: Theme.of(context).primaryColor,
                             width: MediaQuery.of(context).size.width,
                             child: Image.asset(
                               "assets/images/emptyAddress.jpg",

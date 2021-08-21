@@ -52,7 +52,7 @@ class _SignUpFormState extends State<SignUpForm> {
           FormError(errors: errors),
           SizedBox(height: getProportionateScreenHeight(40)),
           DefaultButton(
-            text: "Continue",
+            text: LocalKeys.CONTINUEBUTTON.tr(),
             press: () {
               if (_formKey.currentState.validate()) {
                 _formKey.currentState.save();
@@ -72,18 +72,18 @@ class _SignUpFormState extends State<SignUpForm> {
       onSaved: (newValue) => conformPassword = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          removeError(error: kPassNullError);
+          removeError(error: LocalKeys.PASSEMPTY.tr());
         } else if (value.isNotEmpty && password == conformPassword) {
-          removeError(error: kMatchPassError);
+          removeError(error: LocalKeys.PASSMATCHERROR.tr());
         }
         conformPassword = value;
       },
       validator: (value) {
         if (value.isEmpty) {
-          addError(error: kPassNullError);
+          addError(error: LocalKeys.PASSEMPTY.tr());
           return "";
         } else if ((password != value)) {
-          addError(error: kMatchPassError);
+          addError(error: LocalKeys.PASSMATCHERROR.tr());
           return "";
         }
         return null;
@@ -105,18 +105,18 @@ class _SignUpFormState extends State<SignUpForm> {
       onSaved: (newValue) => password = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          removeError(error: kPassNullError);
+          removeError(error: LocalKeys.PASSEMPTY.tr());
         } else if (value.length >= 8) {
-          removeError(error: kShortPassError);
+          removeError(error: LocalKeys.PASSSHORT.tr());
         }
         password = value;
       },
       validator: (value) {
         if (value.isEmpty) {
-          addError(error: kPassNullError);
+          addError(error: LocalKeys.PASSEMPTY.tr());
           return "";
         } else if (value.length < 8) {
-          addError(error: kShortPassError);
+          addError(error: LocalKeys.PASSSHORT.tr());
           return "";
         }
         return null;
@@ -138,18 +138,18 @@ class _SignUpFormState extends State<SignUpForm> {
       onSaved: (newValue) => email = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          removeError(error: kEmailNullError);
+          removeError(error: LocalKeys.EMAILEMPTY.tr());
         } else if (emailValidatorRegExp.hasMatch(value)) {
-          removeError(error: kInvalidEmailError);
+          removeError(error: LocalKeys.EMAILERROR.tr());
         }
         return null;
       },
       validator: (value) {
         if (value.isEmpty) {
-          addError(error: kEmailNullError);
+          addError(error: LocalKeys.EMAILEMPTY.tr());
           return "";
         } else if (!emailValidatorRegExp.hasMatch(value)) {
-          addError(error: kInvalidEmailError);
+          addError(error: LocalKeys.EMAILERROR.tr());
           return "";
         }
         return null;
@@ -171,16 +171,16 @@ class _SignUpFormState extends State<SignUpForm> {
       onSaved: (newValue) => phoneNumber = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          removeError(error: kPhoneNumberNullError);
+          removeError(error: LocalKeys.PHONEEMPTY.tr());
         }
         return null;
       },
       validator: (value) {
         if (value.isEmpty) {
-          addError(error: kPhoneNumberNullError);
+          addError(error: LocalKeys.PHONEEMPTY.tr());
           return "";
         } else if (value.length < 11) {
-          addError(error: kPhoneErrorval);
+          addError(error: LocalKeys.PHONEERROR.tr());
           return "";
         }
         return null;

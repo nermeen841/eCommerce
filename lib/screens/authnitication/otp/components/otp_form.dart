@@ -111,7 +111,7 @@ class _OtpFormState extends State<OtpForm> {
           ),
           SizedBox(height: SizeConfig.screenHeight * 0.15),
           DefaultButton(
-            text: "Continue",
+            text: LocalKeys.CONTINUEBUTTON.tr(),
             press: () {
               if (_formkey.currentState.validate()) {
                 Navigator.push(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shop_app/components/constans.dart';
 import 'package:shop_app/components/rounded_icon_btn.dart';
 import 'package:shop_app/models/Cart.dart';
-
+import 'package:shop_app/screens/app_cubit/cubit.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
 
@@ -19,8 +19,6 @@ class CartCard extends StatefulWidget {
 }
 
 class _CartCardState extends State<CartCard> {
-  int counter = 1;
-
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -32,7 +30,7 @@ class _CartCardState extends State<CartCard> {
             child: Container(
               padding: EdgeInsets.all(getProportionateScreenWidth(10)),
               decoration: BoxDecoration(
-                color: Color(0xFFF5F6F9),
+                color: Theme.of(context).primaryColor,
                 borderRadius: BorderRadius.circular(15),
               ),
               child: Image.asset(widget.cart.product.images[0]),
@@ -47,7 +45,10 @@ class _CartCardState extends State<CartCard> {
               width: 200,
               child: Text(
                 widget.cart.product.title,
-                style: TextStyle(color: Colors.black, fontSize: 16),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText1
+                    .copyWith(fontSize: 16),
                 maxLines: 2,
               ),
             ),
@@ -71,28 +72,21 @@ class _CartCardState extends State<CartCard> {
                 RoundedIconBtn(
                   icon: Icons.remove,
                   press: () {
-                    setState(() {
-                      counter--;
-                    });
-                    if (counter < 1) {
-                      setState(() {
-                        counter = 1;
-                      });
-                    }
+                    AppCubit.get(context).decreaseQuantity();
                   },
                 ),
+                spaceW(10),
                 Text(
-                  "$counter",
+                  "${AppCubit.get(context).counter}",
                   style:
                       headingStyle.copyWith(color: kPrimaryColor, fontSize: 16),
                 ),
+                spaceW(10),
                 RoundedIconBtn(
                   icon: Icons.add,
                   showShadow: true,
                   press: () {
-                    setState(() {
-                      counter++;
-                    });
+                    AppCubit.get(context).increaseQuantity();
                   },
                 ),
               ],

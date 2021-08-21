@@ -27,7 +27,10 @@ class SearchField extends StatelessWidget {
             focusedBorder: InputBorder.none,
             enabledBorder: InputBorder.none,
             hintText: LocalKeys.SEARCHHINT.tr(),
-            prefixIcon: Icon(Icons.search)),
+            prefixIcon: Icon(
+              Icons.search,
+              color: Theme.of(context).cardColor,
+            )),
       ),
     );
   }

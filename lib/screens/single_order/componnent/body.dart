@@ -25,13 +25,14 @@ class SingleorderBody extends StatelessWidget {
                 height: 30,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.white,
+                  color: Theme.of(context).primaryColor,
                 ),
                 child: SvgPicture.asset(
                   "assets/icons/Bell.svg",
                   fit: BoxFit.contain,
+                  color: Theme.of(context).cardColor,
                 )),
-            color: Colors.white,
+            color: Theme.of(context).cardColor,
           ),
           endChild: Container(
             padding: EdgeInsets.symmetric(vertical: 10),
@@ -55,13 +56,14 @@ class SingleorderBody extends StatelessWidget {
                 height: 30,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.white,
+                  color: Theme.of(context).primaryColor,
                 ),
                 child: SvgPicture.asset(
                   "assets/icons/Bell.svg",
                   fit: BoxFit.contain,
+                  color: Theme.of(context).cardColor,
                 )),
-            color: Colors.white,
+            color: Theme.of(context).primaryColor,
           ),
           endChild: Container(
             padding: EdgeInsets.symmetric(vertical: 10),
@@ -84,13 +86,14 @@ class SingleorderBody extends StatelessWidget {
                 height: 30,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.white,
+                  color: Theme.of(context).primaryColor,
                 ),
                 child: SvgPicture.asset(
                   "assets/icons/Bell.svg",
                   fit: BoxFit.contain,
+                  color: Theme.of(context).cardColor,
                 )),
-            color: Colors.white,
+            color: Theme.of(context).primaryColor,
           ),
           endChild: Container(
             padding: EdgeInsets.symmetric(vertical: 10),
@@ -114,13 +117,14 @@ class SingleorderBody extends StatelessWidget {
                 height: 30,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.white,
+                  color: Theme.of(context).primaryColor,
                 ),
                 child: SvgPicture.asset(
                   "assets/icons/Bell.svg",
                   fit: BoxFit.contain,
+                  color: Theme.of(context).cardColor,
                 )),
-            color: Colors.white,
+            color: Theme.of(context).primaryColor,
           ),
           endChild: Container(
             padding: EdgeInsets.symmetric(vertical: 10),

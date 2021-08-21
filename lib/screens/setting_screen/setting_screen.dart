@@ -8,13 +8,6 @@ class SettingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
-      // appBar: AppBar(
-      //   title: Text(
-      //     "Setting",
-      //     style: headingStyle.copyWith(fontSize: 16),
-      //   ),
-      //   centerTitle: true,
-      // ),
       child: SettingBody(),
     );
   }

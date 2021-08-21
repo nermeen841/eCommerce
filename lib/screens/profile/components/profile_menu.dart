@@ -22,7 +22,7 @@ class ProfileMenu extends StatelessWidget {
       child: FlatButton(
         padding: EdgeInsets.all(20),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-        color: Color(0xFFF5F6F9),
+        color: Theme.of(context).primaryColor,
         onPressed: press,
         child: Row(
           children: [
@@ -32,8 +32,16 @@ class ProfileMenu extends StatelessWidget {
               width: 22,
             ),
             SizedBox(width: 20),
-            Expanded(child: Text(text)),
-            Icon(Icons.arrow_forward_ios),
+            Expanded(
+                child: Text(
+              text,
+              style:
+                  TextStyle(color: Theme.of(context).textTheme.bodyText1.color),
+            )),
+            Icon(
+              Icons.arrow_forward_ios,
+              color: Theme.of(context).cardColor,
+            ),
           ],
         ),
       ),

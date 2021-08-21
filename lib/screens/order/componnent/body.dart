@@ -24,11 +24,14 @@ class OrderBody extends StatelessWidget {
                   Navigator.pushNamed(context, SingleOrderScreen.routeName),
               child: Card(
                 elevation: 2,
+                color: Theme.of(context).primaryColor,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Container(
                   padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  // color: Theme.of(context).primaryColor,
                   child: Column(
                     children: [
                       Row(

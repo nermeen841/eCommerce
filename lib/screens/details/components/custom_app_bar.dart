@@ -28,12 +28,13 @@ class CustomAppBar extends PreferredSize {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(60),
                 ),
-                color: Colors.white,
+                color: Theme.of(context).primaryColor,
                 padding: EdgeInsets.zero,
                 onPressed: () => Navigator.pop(context),
                 child: SvgPicture.asset(
                   "assets/icons/Back ICon.svg",
                   height: 15,
+                  color: Theme.of(context).cardColor,
                 ),
               ),
             ),
@@ -41,7 +42,7 @@ class CustomAppBar extends PreferredSize {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 5),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Theme.of(context).primaryColor,
                 borderRadius: BorderRadius.circular(14),
               ),
               child: Row(

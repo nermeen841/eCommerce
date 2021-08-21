@@ -31,7 +31,7 @@ class SliverAppbar extends StatelessWidget {
                   child: Container(
                     padding: EdgeInsets.only(left: 10, right: 10),
                     decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Theme.of(context).primaryColor,
                         borderRadius: BorderRadius.circular(20)),
                     child: Row(
                       children: [
@@ -40,13 +40,13 @@ class SliverAppbar extends StatelessWidget {
                                 "assets/icons/Back ICon.svg",
                                 width: 20,
                                 height: 20,
-                                color: Colors.black,
+                                color: Theme.of(context).cardColor,
                               )
                             : SvgPicture.asset(
                                 "assets/icons/arrow_right.svg",
                                 width: 20,
                                 height: 20,
-                                color: Colors.black,
+                                color: Theme.of(context).cardColor,
                               ),
                         spaceW(10),
                         Text(LocalKeys.GOBACK.tr()),

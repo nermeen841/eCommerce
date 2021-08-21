@@ -23,6 +23,7 @@ class CustomSurffixIcon extends StatelessWidget {
       child: SvgPicture.asset(
         svgIcon,
         height: getProportionateScreenWidth(18),
+        color: Theme.of(context).cardColor,
       ),
     );
   }

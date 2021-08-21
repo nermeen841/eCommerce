@@ -144,18 +144,18 @@ class _SignFormState extends State<SignForm> {
       onSaved: (newValue) => password = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          removeError(error: kPassNullError);
+          removeError(error: LocalKeys.PASSEMPTY.tr());
         } else if (value.length >= 8) {
-          removeError(error: kShortPassError);
+          removeError(error: LocalKeys.PASSSHORT.tr());
         }
         return null;
       },
       validator: (value) {
         if (value.isEmpty) {
-          addError(error: kPassNullError);
+          addError(error: LocalKeys.PASSEMPTY.tr());
           return "";
         } else if (value.length < 8) {
-          addError(error: kShortPassError);
+          addError(error: LocalKeys.PASSSHORT.tr());
           return "";
         }
         return null;
@@ -177,18 +177,18 @@ class _SignFormState extends State<SignForm> {
       onSaved: (newValue) => email = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          removeError(error: kEmailNullError);
+          removeError(error: LocalKeys.EMAILEMPTY.tr());
         } else if (emailValidatorRegExp.hasMatch(value)) {
-          removeError(error: kInvalidEmailError);
+          removeError(error: LocalKeys.EMAILERROR.tr());
         }
         return null;
       },
       validator: (value) {
         if (value.isEmpty) {
-          addError(error: kEmailNullError);
+          addError(error: LocalKeys.EMAILEMPTY.tr());
           return "";
         } else if (!emailValidatorRegExp.hasMatch(value)) {
-          addError(error: kInvalidEmailError);
+          addError(error: LocalKeys.EMAILERROR.tr());
           return "";
         }
         return null;

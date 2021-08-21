@@ -34,7 +34,10 @@ class _CheckoutBodyState extends State<CheckoutBody> {
               children: [
                 Text(
                   LocalKeys.DELIVERYADDRESS.tr(),
-                  style: headingStyle.copyWith(fontSize: 16),
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyText1
+                      .copyWith(fontSize: 16),
                 ),
                 spaceH(10),
                 AddressCard(),
@@ -50,7 +53,10 @@ class _CheckoutBodyState extends State<CheckoutBody> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           RadioListTile(
-                              title: Text(LocalKeys.CASH.tr()),
+                              title: Text(
+                                LocalKeys.CASH.tr(),
+                                style: Theme.of(context).textTheme.bodyText1,
+                              ),
                               value: LocalKeys.CASH.tr(),
                               groupValue: selectedVal,
                               onChanged: (value) {
@@ -59,7 +65,10 @@ class _CheckoutBodyState extends State<CheckoutBody> {
                                 });
                               }),
                           RadioListTile(
-                              title: Text(LocalKeys.PAYMENTONLINE.tr()),
+                              title: Text(
+                                LocalKeys.PAYMENTONLINE.tr(),
+                                style: Theme.of(context).textTheme.bodyText1,
+                              ),
                               value: LocalKeys.PAYMENTONLINE.tr(),
                               groupValue: selectedVal,
                               onChanged: (value) {
@@ -73,9 +82,13 @@ class _CheckoutBodyState extends State<CheckoutBody> {
                 spaceH(20),
                 Text(
                   LocalKeys.ORDERINFO.tr(),
-                  style: headingStyle.copyWith(fontSize: 16),
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyText1
+                      .copyWith(fontSize: 16),
                 ),
                 Card(
+                  color: Theme.of(context).primaryColor,
                   elevation: 2,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
@@ -84,7 +97,7 @@ class _CheckoutBodyState extends State<CheckoutBody> {
                     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                     margin: EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Theme.of(context).primaryColor,
                         borderRadius: BorderRadius.circular(20)),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -118,7 +131,12 @@ class _CheckoutBodyState extends State<CheckoutBody> {
                           children: [
                             Text(
                               "${LocalKeys.TOTAL.tr()} : ",
-                              style: headingStyle.copyWith(fontSize: 14),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1
+                                  .copyWith(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600),
                             ),
                             Text(
                               "134.0 EG",
@@ -138,10 +156,11 @@ class _CheckoutBodyState extends State<CheckoutBody> {
                     context: context,
                     builder: (BuildContext context) {
                       return AlertDialog(
+                        backgroundColor: Theme.of(context).primaryColor,
                         content: Container(
                           decoration: new BoxDecoration(
                             shape: BoxShape.rectangle,
-                            color: const Color(0xFFFFFF),
+                            color: Theme.of(context).primaryColor,
                             borderRadius:
                                 new BorderRadius.all(new Radius.circular(32.0)),
                           ),
@@ -158,14 +177,19 @@ class _CheckoutBodyState extends State<CheckoutBody> {
                                       child: Text(
                                         LocalKeys.ORDERSUCCESS.tr(),
                                         maxLines: 2,
-                                        style:
-                                            headingStyle.copyWith(fontSize: 16),
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyText1
+                                            .copyWith(fontSize: 16),
                                       ),
                                     ),
                                     spaceH(10),
                                     Center(
                                       child: Text(
                                         LocalKeys.ORDERSUCCESSmessage.tr(),
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyText1,
                                         maxLines: 2,
                                       ),
                                     ),
@@ -186,62 +210,68 @@ class _CheckoutBodyState extends State<CheckoutBody> {
                       );
                     },
                   ),
-                  // showDialog<void>(
-                  //   context: context,
-                  //   builder: (BuildContext context) {
-                  //     return AlertDialog(
-                  //       content: Container(
-                  //         decoration: new BoxDecoration(
-                  //           shape: BoxShape.rectangle,
-                  //           color: const Color(0xFFFFFF),
-                  //           borderRadius:
-                  //               new BorderRadius.all(new Radius.circular(32.0)),
-                  //         ),
-                  //         child: StatefulBuilder(
-                  //           builder:
-                  //               (BuildContext context, StateSetter setState) {
-                  //             return Column(
-                  //                 mainAxisSize: MainAxisSize.min,
-                  //                 crossAxisAlignment: CrossAxisAlignment.center,
-                  //                 mainAxisAlignment: MainAxisAlignment.center,
-                  //                 children: [
-                  //                   Align(
-                  //                     alignment: Alignment.topLeft,
-                  //                     child: InkWell(
-                  //                       onTap: () => Navigator.pop(context),
-                  //                       child: SvgPicture.asset(
-                  //                         "assets/icons/Close.svg",
-                  //                         height: 20,
-                  //                         width: 20,
-                  //                       ),
+                  //   showDialog<void>(
+                  // context: context,
+                  // builder: (BuildContext context) {
+                  //   return AlertDialog(
+                  //     backgroundColor: Theme.of(context).primaryColor,
+                  //     content: Container(
+                  //       decoration: new BoxDecoration(
+                  //         shape: BoxShape.rectangle,
+                  //         color: Theme.of(context).primaryColor,
+                  //         borderRadius:
+                  //             new BorderRadius.all(new Radius.circular(32.0)),
+                  //       ),
+                  //       child: StatefulBuilder(
+                  //         builder:
+                  //             (BuildContext context, StateSetter setState) {
+                  //           return Column(
+                  //               mainAxisSize: MainAxisSize.min,
+                  //               crossAxisAlignment: CrossAxisAlignment.center,
+                  //               mainAxisAlignment: MainAxisAlignment.center,
+                  //               children: [
+                  //                 Align(
+                  //                   alignment: Alignment.topLeft,
+                  //                   child: InkWell(
+                  //                     onTap: () => Navigator.pop(context),
+                  //                     child: SvgPicture.asset(
+                  //                       "assets/icons/Close.svg",
+                  //                       height: 20,
+                  //                       width: 20,
                   //                     ),
                   //                   ),
-                  //                   Image.asset(
-                  //                       "assets/icons/WhatsApp Image 2021-08-05 at 4.00.02 PM.jpeg"),
-                  //                   Text(
-                  //                      LocalKeys.ORDERFAILED.tr(),
-                  //                     style:
-                  //                         headingStyle.copyWith(fontSize: 16),
-                  //                   ),
-                  //                   spaceH(10),
-                  //                   Text(
-                  //                      LocalKeys.ORDERFAILEDMESS.tr(),
-                  //                   ),
-                  //                   spaceH(10),
-                  //                   DefaultButton(
-                  //                     text:  LocalKeys.PLEASETRYAGAIN.tr(),
-                  //                     press: () {},
-                  //                   ),
-                  //                   TextButton(
-                  //                       onPressed: () => Navigator.pushNamed(
-                  //                           context, HomeScreen.routeName),
-                  //                       child: Text( LocalKeys.BACKTOHOME.tr()))
-                  //                 ]);
-                  //           },
-                  //         ),
+                  //                 ),
+                  //                 spaceH(20),
+                  //                 Image.asset(
+                  //                     "assets/icons/WhatsApp Image 2021-08-05 at 4.00.02 PM.jpeg"),
+                  //                 Text(
+                  //                   LocalKeys.ORDERFAILED.tr(),
+                  //                   style: Theme.of(context)
+                  //                       .textTheme
+                  //                       .bodyText1
+                  //                       .copyWith(fontSize: 16),
+                  //                 ),
+                  //                 spaceH(10),
+                  //                 Text(
+                  //                   LocalKeys.ORDERFAILEDMESS.tr(),
+                  //                   style:
+                  //                       Theme.of(context).textTheme.bodyText1,
+                  //                 ),
+                  //                 spaceH(10),
+                  //                 DefaultButton(
+                  //                   text: LocalKeys.PLEASETRYAGAIN.tr(),
+                  //                   press: () {},
+                  //                 ),
+                  //                 TextButton(
+                  //                     onPressed: () => Navigator.pushNamed(
+                  //                         context, HomeScreen.routeName),
+                  //                     child: Text(LocalKeys.BACKTOHOME.tr()))
+                  //               ]);
+                  //         },
                   //       ),
-                  //     );
-                  //   },
+                  //     ),
+                  //   );
+                  // },
                   // ),
                 )
               ],

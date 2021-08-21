@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:shop_app/components/custom_surfix_icon.dart';
 import 'package:shop_app/components/default_button.dart';
 import 'package:shop_app/components/form_error.dart';
+import 'package:shop_app/generated/local_keys.dart';
 import 'package:shop_app/screens/authnitication/otp/otp_screen.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
 
@@ -50,7 +51,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
           FormError(errors: errors),
           SizedBox(height: getProportionateScreenHeight(40)),
           DefaultButton(
-            text: "continue",
+            text: LocalKeys.CONTINUEBUTTON.tr(),
             press: () {
               if (_formKey.currentState.validate()) {
                 Navigator.pushNamed(context, OtpScreen.routeName);
@@ -67,20 +68,20 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
       onSaved: (newValue) => address = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          removeError(error: kAddressNullError);
+          removeError(error: LocalKeys.ADDRESSEMPTY.tr());
         }
         return null;
       },
       validator: (value) {
         if (value.isEmpty) {
-          addError(error: kAddressNullError);
+          addError(error: LocalKeys.ADDRESSEMPTY.tr());
           return "";
         }
         return null;
       },
       decoration: InputDecoration(
-        labelText: "Address",
-        hintText: "Enter your address",
+        labelText: LocalKeys.ADDRESSLABEL.tr(),
+        hintText: LocalKeys.ADDRESSHINT.tr(),
         // If  you are using latest version of flutter then lable text and hint text shown like this
         // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -96,20 +97,20 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
       onSaved: (newValue) => phoneNumber = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          removeError(error: kPhoneNumberNullError);
+          removeError(error: LocalKeys.PHONEEMPTY.tr());
         }
         return null;
       },
       validator: (value) {
         if (value.isEmpty) {
-          addError(error: kPhoneNumberNullError);
+          addError(error: LocalKeys.PHONEEMPTY.tr());
           return "";
         }
         return null;
       },
       decoration: InputDecoration(
-        labelText: "Phone Number",
-        hintText: "Enter your phone number",
+        labelText: LocalKeys.PHONENUMLABEL.tr(),
+        hintText: LocalKeys.PHONENUMHINT.tr(),
         // If  you are using latest version of flutter then lable text and hint text shown like this
         // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -122,8 +123,8 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
     return TextFormField(
       onSaved: (newValue) => lastName = newValue,
       decoration: InputDecoration(
-        labelText: "Last Name",
-        hintText: "Enter your last name",
+        labelText: LocalKeys.LASTNAMELABEL.tr(),
+        hintText: LocalKeys.LASTNAMEHINT.tr(),
         // If  you are using latest version of flutter then lable text and hint text shown like this
         // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -137,7 +138,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
       onSaved: (newValue) => firstName = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          removeError(error: kNamelNullError);
+          removeError(error: LocalKeys.NAMEEMPTY.tr());
         }
         return null;
       },
@@ -149,8 +150,8 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
         return null;
       },
       decoration: InputDecoration(
-        labelText: "First Name",
-        hintText: "Enter your first name",
+        labelText: LocalKeys.FIRSTNAMELABEL.tr(),
+        hintText: LocalKeys.FIRSTNAMEHINT.tr(),
         // If  you are using latest version of flutter then lable text and hint text shown like this
         // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,

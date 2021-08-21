@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/components/socal_card.dart';
-import 'package:shop_app/constants.dart';
 import 'package:shop_app/generated/local_keys.dart';
 import 'package:shop_app/size_config.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -20,7 +19,13 @@ class Body extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: SizeConfig.screenHeight * 0.04), // 4%
-                Text(LocalKeys.SIGNUPTITLE.tr(), style: headingStyle),
+                Text(
+                  LocalKeys.SIGNUPTITLE.tr(),
+                  style: TextStyle(
+                    fontSize: getProportionateScreenWidth(28),
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
                 Text(
                   LocalKeys.COMPLETEPROFILEINTRO.tr(),
                   textAlign: TextAlign.center,

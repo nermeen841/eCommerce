@@ -21,7 +21,7 @@ class CheckoutCard extends StatelessWidget {
       ),
       // height: 174,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).primaryColor,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(30),
           topRight: Radius.circular(30),
@@ -70,9 +70,10 @@ class CheckoutCard extends StatelessWidget {
                     text: "${LocalKeys.TOTAL.tr()}:\n",
                     children: [
                       TextSpan(
-                        text: "\$337.15",
-                        style: TextStyle(fontSize: 16, color: Colors.black),
-                      ),
+                          text: "\$337.15",
+                          style: Theme.of(context).textTheme.bodyText1.copyWith(
+                                fontSize: 16,
+                              )),
                     ],
                   ),
                 ),

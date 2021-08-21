@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shop_app/components/default_button.dart';
 import 'package:shop_app/components/rounded_icon_btn.dart';
 import 'package:shop_app/models/Product.dart';
+import 'package:shop_app/screens/app_cubit/cubit.dart';
 import 'package:shop_app/size_config.dart';
 
 import '../../../constants.dart';
@@ -28,7 +29,7 @@ class _BodyState extends State<Body> {
       children: [
         ProductImages(product: widget.product),
         TopRoundedContainer(
-          color: Colors.white,
+          color: Theme.of(context).primaryColor,
           child: Column(
             children: [
               ProductDescription(
@@ -36,7 +37,7 @@ class _BodyState extends State<Body> {
                 pressOnSeeMore: () {},
               ),
               TopRoundedContainer(
-                color: Color(0xFFF6F7F9),
+                color: Theme.of(context).primaryColor,
                 child: Column(
                   children: [
                     Row(
@@ -46,19 +47,20 @@ class _BodyState extends State<Body> {
                         RoundedIconBtn(
                           icon: Icons.remove,
                           press: () {
-                            setState(() {
-                              counter--;
-                            });
-                            if (counter < 1) {
-                              setState(() {
-                                counter = 1;
-                              });
-                            }
+                            AppCubit.get(context).decreaseQuantity();
+                            // setState(() {
+                            //   counter--;
+                            // });
+                            // if (counter < 1) {
+                            //   setState(() {
+                            //     counter = 1;
+                            //   });
+                            // }
                           },
                         ),
                         SizedBox(width: getProportionateScreenWidth(20)),
                         Text(
-                          "$counter",
+                          "${AppCubit.get(context).counter}",
                           style: headingStyle.copyWith(color: kPrimaryColor),
                         ),
                         Spacer(),
@@ -66,15 +68,16 @@ class _BodyState extends State<Body> {
                           icon: Icons.add,
                           showShadow: true,
                           press: () {
-                            setState(() {
-                              counter++;
-                            });
+                            AppCubit.get(context).increaseQuantity();
+                            // setState(() {
+                            //   counter++;
+                            // });
                           },
                         ),
                       ],
                     ),
                     TopRoundedContainer(
-                      color: Colors.white,
+                      color: Theme.of(context).primaryColor,
                       child: Padding(
                         padding: EdgeInsets.only(
                           left: SizeConfig.screenWidth * 0.15,

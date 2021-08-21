@@ -37,7 +37,10 @@ class ProductCardFavourite extends StatelessWidget {
               width: 200,
               child: Text(
                 cart.product.title,
-                style: TextStyle(color: Colors.black, fontSize: 16),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText1
+                    .copyWith(fontSize: 16),
                 maxLines: 2,
               ),
             ),

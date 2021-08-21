@@ -33,7 +33,10 @@ class IconBtnWithCounter extends StatelessWidget {
               color: kSecondaryColor.withOpacity(0.1),
               shape: BoxShape.circle,
             ),
-            child: SvgPicture.asset(svgSrc),
+            child: SvgPicture.asset(
+              svgSrc,
+              color: Theme.of(context).cardColor,
+            ),
           ),
           if (numOfitem != 0)
             Positioned(

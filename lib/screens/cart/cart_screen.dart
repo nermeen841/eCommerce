@@ -22,11 +22,14 @@ class CartScreen extends StatelessWidget {
         children: [
           Text(
             LocalKeys.YOURCART.tr(),
-            style: TextStyle(color: Colors.black),
+            style: Theme.of(context)
+                .textTheme
+                .bodyText1
+                .copyWith(fontWeight: FontWeight.w600),
           ),
           Text(
             "${demoCarts.length} ${LocalKeys.ITEMS.tr()}",
-            style: Theme.of(context).textTheme.caption,
+            style: Theme.of(context).textTheme.bodyText1,
           ),
         ],
       ),
