@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/CacheHelper/mySharedPreference.dart';
 import 'package:shop_app/constants.dart';
 import 'package:shop_app/generated/local_keys.dart';
 import 'package:shop_app/screens/authnitication/sign_in/sign_in_screen.dart';
@@ -15,9 +16,18 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   int currentPage = 0;
   List<Map<String, String>> splashData = [
-    {"text": LocalKeys.INTRO1.tr(), "image": "assets/images/splash_1.png"},
-    {"text": LocalKeys.INTRO2.tr(), "image": "assets/images/splash_2.png"},
-    {"text": LocalKeys.INTRO3.tr(), "image": "assets/images/splash_3.png"},
+    {
+      "text": LocalKeys.INTRO1.tr(),
+      "image": "assets/icons/undraw_shopping_app_flsj.svg"
+    },
+    {
+      "text": LocalKeys.INTRO2.tr(),
+      "image": "assets/icons/undraw_Successful_purchase_re_mpig.svg"
+    },
+    {
+      "text": LocalKeys.INTRO3.tr(),
+      "image": "assets/icons/undraw_Order_confirmed_re_g0if.svg"
+    },
   ];
   @override
   Widget build(BuildContext context) {
@@ -59,8 +69,14 @@ class _BodyState extends State<Body> {
                     Spacer(flex: 3),
                     DefaultButton(
                       text: LocalKeys.CONTINUEBUTTON.tr(),
-                      press: () {
-                        Navigator.pushNamed(context, SignInScreen.routeName);
+                      press: () async {
+                        setState(() {
+                          CacheHelper.saveOnBoarding(true);
+                        });
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SignInScreen()));
                       },
                     ),
                     Spacer(),

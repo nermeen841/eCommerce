@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/constants.dart';
 import 'package:shop_app/screens/Notification/notificationScreen.dart';
 import 'package:shop_app/screens/cart/cart_screen.dart';
-
+import 'package:shop_app/screens/home/home_screen.dart';
 import '../../../size_config.dart';
 import 'icon_btn_with_counter.dart';
 import 'search_field.dart';
@@ -19,16 +20,27 @@ class HomeHeader extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          InkWell(
+            child: Icon(
+              Icons.menu,
+              color: kTextColor,
+            ),
+            onTap: () => HomeScreen.scaffoldKey.currentState.openDrawer(),
+          ),
           SearchField(),
           IconBtnWithCounter(
             svgSrc: "assets/icons/Cart Icon.svg",
-            press: () => Navigator.pushNamed(context, CartScreen.routeName),
+            press: () => Navigator.push(
+                context, MaterialPageRoute(builder: (context) => CartScreen())),
           ),
           IconBtnWithCounter(
             svgSrc: "assets/icons/Bell.svg",
             numOfitem: 3,
             press: () {
-              Navigator.pushNamed(context, NotificationScreen.routeName);
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => NotificationScreen()));
             },
           ),
         ],

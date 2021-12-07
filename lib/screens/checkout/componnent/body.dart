@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:shop_app/components/constans.dart';
 import 'package:shop_app/components/default_button.dart';
 import 'package:shop_app/constants.dart';
 import 'package:shop_app/generated/local_keys.dart';
 import 'package:shop_app/screens/UserAddress/card_Address.dart';
 import 'package:shop_app/screens/home/home_screen.dart';
-import 'package:shop_app/screens/profile/components/profile_menu.dart';
 import 'package:shop_app/screens/single_order/single_order.dart';
 import 'package:shop_app/size_config.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -42,42 +42,47 @@ class _CheckoutBodyState extends State<CheckoutBody> {
                 spaceH(10),
                 AddressCard(),
                 spaceH(20),
-                ProfileMenu(
-                  text: LocalKeys.PAYMENTMETHODE.tr(),
-                  icon: "assets/icons/Bill Icon.svg",
-                  press: () => homeBottomSheet(
-                      context: context,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          RadioListTile(
-                              title: Text(
-                                LocalKeys.CASH.tr(),
-                                style: Theme.of(context).textTheme.bodyText1,
-                              ),
-                              value: LocalKeys.CASH.tr(),
-                              groupValue: selectedVal,
-                              onChanged: (value) {
-                                setState(() {
-                                  selectedVal = value;
-                                });
-                              }),
-                          RadioListTile(
-                              title: Text(
-                                LocalKeys.PAYMENTONLINE.tr(),
-                                style: Theme.of(context).textTheme.bodyText1,
-                              ),
-                              value: LocalKeys.PAYMENTONLINE.tr(),
-                              groupValue: selectedVal,
-                              onChanged: (value) {
-                                setState(() {
-                                  selectedVal = value;
-                                });
-                              }),
-                        ],
-                      )),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SvgPicture.asset("assets/icons/Bill Icon.svg"),
+                    spaceW(10),
+                    Text(LocalKeys.PAYMENTMETHODE.tr()),
+                  ],
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    RadioListTile(
+                        title: Text(
+                          LocalKeys.CASH.tr(),
+                          style: Theme.of(context).textTheme.bodyText1,
+                        ),
+                        activeColor: kPrimaryColor,
+                        value: LocalKeys.CASH.tr(),
+                        groupValue: selectedVal,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedVal = value;
+                          });
+                        }),
+                    RadioListTile(
+                        title: Text(
+                          LocalKeys.PAYMENTONLINE.tr(),
+                          style: Theme.of(context).textTheme.bodyText1,
+                        ),
+                        activeColor: kPrimaryColor,
+                        value: LocalKeys.PAYMENTONLINE.tr(),
+                        groupValue: selectedVal,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedVal = value;
+                          });
+                        }),
+                  ],
                 ),
                 spaceH(20),
                 Text(
@@ -109,6 +114,19 @@ class _CheckoutBodyState extends State<CheckoutBody> {
                           children: [
                             Text("${LocalKeys.SUBTOTAL.tr()} : "),
                             Text("134.0 EG"),
+                          ],
+                        ),
+                        spaceH(10),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Discount : ",
+                              style: TextStyle(color: HexColor("#AB0D03")),
+                            ),
+                            Text("0.0 EG",
+                                style: TextStyle(color: HexColor("#AB0D03"))),
                           ],
                         ),
                         spaceH(10),
@@ -196,12 +214,19 @@ class _CheckoutBodyState extends State<CheckoutBody> {
                                     spaceH(10),
                                     DefaultButton(
                                       text: LocalKeys.TRACKORDER.tr(),
-                                      press: () => Navigator.pushNamed(
-                                          context, SingleOrderScreen.routeName),
+                                      press: () => Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  SingleOrderScreen())),
                                     ),
                                     TextButton(
-                                        onPressed: () => Navigator.pushNamed(
-                                            context, HomeScreen.routeName),
+                                        onPressed: () =>
+                                            Navigator.pushReplacement(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        HomeScreen())),
                                         child: Text(LocalKeys.BACKTOHOME.tr()))
                                   ]);
                             },

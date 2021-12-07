@@ -63,10 +63,11 @@ class _SignFormState extends State<SignForm> {
           buildPasswordFormField(),
           SizedBox(height: getProportionateScreenHeight(30)),
           InkWell(
-            onTap: () => Navigator.pushNamed(context, HomeScreen.routeName),
+            onTap: () => Navigator.pushReplacement(
+                context, MaterialPageRoute(builder: (context) => HomeScreen())),
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(
                   LocalKeys.SKIPBUTTON.tr(),
@@ -75,19 +76,25 @@ class _SignFormState extends State<SignForm> {
                       fontSize: 18,
                       fontWeight: FontWeight.w600),
                 ),
-                spaceW(20),
-                (applang() == "en")
-                    ? SvgPicture.asset(
-                        "assets/icons/right-arrow-angle-of-two-shapes.svg",
-                        width: 20,
-                        height: 20,
-                        color: kPrimaryColor,
+                spaceW(10),
+                (applang() == 'en')
+                    ? Padding(
+                        padding: const EdgeInsets.only(top: 8.0),
+                        child: SvgPicture.asset(
+                          "assets/icons/right-arrow-angle-of-two-shapes.svg",
+                          width: 15,
+                          height: 15,
+                          color: kPrimaryColor,
+                        ),
                       )
-                    : SvgPicture.asset(
-                        "assets/icons/double-left-arrows-angles.svg",
-                        width: 20,
-                        height: 20,
-                        color: kPrimaryColor,
+                    : Padding(
+                        padding: const EdgeInsets.only(top: 8.0),
+                        child: SvgPicture.asset(
+                          "assets/icons/double-left-arrows-angles.svg",
+                          width: 15,
+                          height: 15,
+                          color: kPrimaryColor,
+                        ),
                       ),
               ],
             ),
@@ -107,8 +114,10 @@ class _SignFormState extends State<SignForm> {
               Text(LocalKeys.REMEMBERME.tr()),
               Spacer(),
               GestureDetector(
-                onTap: () => Navigator.pushNamed(
-                    context, ForgotPasswordScreen.routeName),
+                onTap: () => Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ForgotPasswordScreen())),
                 child: Text(
                   LocalKeys.FORGETPASSWORD.tr(),
                   style: TextStyle(decoration: TextDecoration.underline),
@@ -119,7 +128,7 @@ class _SignFormState extends State<SignForm> {
           FormError(errors: errors),
           SizedBox(height: getProportionateScreenHeight(20)),
           DefaultButton(
-            text: LocalKeys.CONTINUEBUTTON.tr(),
+            text: LocalKeys.CONTBUTTON.tr(),
             press: () {
               if (_formKey.currentState.validate()) {
                 _formKey.currentState.save();

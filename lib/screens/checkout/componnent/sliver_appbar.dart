@@ -10,7 +10,7 @@ class CheckoutSliver extends StatelessWidget {
     return SliverAppBar(
       floating: false,
       elevation: 0.0,
-      expandedHeight: 120,
+      expandedHeight: 100,
       pinned: true,
       automaticallyImplyLeading: false,
       backgroundColor: kPrimaryColor,

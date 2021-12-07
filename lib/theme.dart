@@ -47,8 +47,10 @@ AppBarTheme appBarTheme() {
   return AppBarTheme(
     color: Colors.white,
     elevation: 0,
+    // ignore: deprecated_member_use
     brightness: Brightness.light,
     iconTheme: IconThemeData(color: Colors.black),
+    // ignore: deprecated_member_use
     textTheme: TextTheme(
       headline6: TextStyle(color: Color(0XFF8B8B8B), fontSize: 18),
     ),
@@ -65,8 +67,10 @@ ThemeData darkTheme() {
     appBarTheme: AppBarTheme(
       color: Colors.black26,
       elevation: 0,
+      // ignore: deprecated_member_use
       brightness: Brightness.dark,
       iconTheme: IconThemeData(color: Colors.white),
+      // ignore: deprecated_member_use
       textTheme: TextTheme(
         headline6: TextStyle(color: Colors.white, fontSize: 18),
       ),

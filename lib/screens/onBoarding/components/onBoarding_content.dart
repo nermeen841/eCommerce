@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/generated/local_keys.dart';
-import 'package:easy_localization/easy_localization.dart';
-import '../../../constants.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shop_app/components/constans.dart';
 import '../../../size_config.dart';
 
 class SplashContent extends StatelessWidget {
@@ -17,20 +16,19 @@ class SplashContent extends StatelessWidget {
     return Column(
       children: <Widget>[
         Spacer(),
-        Text(
-          LocalKeys.INTROTITLE.tr(),
-          style: TextStyle(
-            fontSize: getProportionateScreenWidth(36),
-            color: kPrimaryColor,
-            fontWeight: FontWeight.bold,
-          ),
+        Image.asset(
+          "assets/images/logo.png",
+          height: 40,
+          width: 350,
+          fit: BoxFit.cover,
         ),
+        spaceH(20),
         Text(
           text,
           textAlign: TextAlign.center,
         ),
         Spacer(flex: 2),
-        Image.asset(
+        SvgPicture.asset(
           image,
           height: getProportionateScreenHeight(265),
           width: getProportionateScreenWidth(235),

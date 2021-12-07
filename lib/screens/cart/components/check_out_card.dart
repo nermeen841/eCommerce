@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shop_app/components/constans.dart';
 import 'package:shop_app/components/default_button.dart';
 import 'package:shop_app/generated/local_keys.dart';
+import 'package:shop_app/screens/cart/components/vouncher_market.dart';
 import 'package:shop_app/screens/checkout/check_out.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -39,50 +41,57 @@ class CheckoutCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                Container(
-                  padding: EdgeInsets.all(10),
-                  height: getProportionateScreenWidth(40),
-                  width: getProportionateScreenWidth(40),
-                  decoration: BoxDecoration(
-                    color: Color(0xFFF5F6F9),
-                    borderRadius: BorderRadius.circular(10),
+            InkWell(
+              child: Row(
+                children: [
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    height: getProportionateScreenWidth(40),
+                    width: getProportionateScreenWidth(40),
+                    decoration: BoxDecoration(
+                      color: Color(0xFFF5F6F9),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: SvgPicture.asset("assets/icons/receipt.svg"),
                   ),
-                  child: SvgPicture.asset("assets/icons/receipt.svg"),
-                ),
-                Spacer(),
-                Text(LocalKeys.VOUNCHERCODRE.tr()),
-                const SizedBox(width: 10),
-                Icon(
-                  Icons.arrow_forward_ios,
-                  size: 12,
-                  color: kTextColor,
-                )
-              ],
+                  Spacer(),
+                  Text(LocalKeys.VOUNCHERCODRE.tr()),
+                  const SizedBox(width: 10),
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    size: 12,
+                    color: kTextColor,
+                  )
+                ],
+              ),
+              onTap: () {
+                homeBottomSheet(context: context, child: VouncherMarket());
+              },
             ),
             SizedBox(height: getProportionateScreenHeight(20)),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            Column(
               children: [
-                Text.rich(
-                  TextSpan(
-                    text: "${LocalKeys.TOTAL.tr()}:\n",
-                    children: [
-                      TextSpan(
-                          text: "\$337.15",
-                          style: Theme.of(context).textTheme.bodyText1.copyWith(
-                                fontSize: 16,
-                              )),
-                    ],
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "${LocalKeys.TOTAL.tr()}:",
+                    ),
+                    Text("\$337.15",
+                        style: Theme.of(context).textTheme.bodyText1.copyWith(
+                              fontSize: 16,
+                            )),
+                  ],
                 ),
                 SizedBox(
-                  width: getProportionateScreenWidth(190),
+                  width: getProportionateScreenWidth(400),
                   child: DefaultButton(
                     text: LocalKeys.CHECKOUT.tr(),
-                    press: () =>
-                        Navigator.pushNamed(context, CheckoutScreen.routeName),
+                    press: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => CheckoutScreen())),
                   ),
                 ),
               ],

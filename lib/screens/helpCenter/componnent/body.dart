@@ -12,6 +12,7 @@ class HelpCenterBody extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       child: Card(
         clipBehavior: Clip.antiAlias,
+        color: Colors.white,
         child: Column(
           children: <Widget>[
             // SizedBox(

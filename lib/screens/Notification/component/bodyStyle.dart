@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../../constants.dart';
+import '../../../size_config.dart';
 
 class BodyStyle extends StatelessWidget {
   final String title;
@@ -33,7 +32,10 @@ class BodyStyle extends StatelessWidget {
             )),
         Text(
           title,
-          style: headingStyle,
+          style: Theme.of(context).textTheme.bodyText1.copyWith(
+                fontSize: getProportionateScreenWidth(30),
+                fontWeight: FontWeight.bold,
+              ),
         ),
         Text(
           description,

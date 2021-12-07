@@ -18,7 +18,7 @@ class Body extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(height: SizeConfig.screenHeight * 0.04), // 4%
+                // SizedBox(height: SizeConfig.screenHeight * 0.04), // 4%
                 Text(
                   LocalKeys.SIGNUPTITLE.tr(),
                   style: TextStyle(

@@ -19,14 +19,12 @@ class Body extends StatelessWidget {
         SizedBox(height: SizeConfig.screenHeight * 0.04),
         TwenAnimation(),
         SizedBox(height: SizeConfig.screenHeight * 0.08),
-        Text(
-          "$message",
-          style: TextStyle(
-            fontSize: getProportionateScreenWidth(30),
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-          ),
-        ),
+        Text("$message",
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.bodyText1.copyWith(
+                  fontSize: getProportionateScreenWidth(20),
+                  fontWeight: FontWeight.w400,
+                )),
         Spacer(),
         SizedBox(
           width: SizeConfig.screenWidth * 0.6,

@@ -4,7 +4,6 @@ import 'package:shop_app/components/constans.dart';
 import 'package:shop_app/components/default_button.dart';
 import 'package:shop_app/constants.dart';
 import 'package:shop_app/generated/local_keys.dart';
-import 'package:shop_app/screens/app_cubit/cubit.dart';
 import 'package:shop_app/screens/authnitication/forgot_password/newPassword/newPassword.dart';
 import 'package:shop_app/screens/profile/components/profile_menu.dart';
 import 'package:shop_app/screens/setting_screen/componnent/select_country_city.dart';
@@ -33,16 +32,16 @@ class _SettingBodyState extends State<SettingBody> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: IconButton(
-                    icon: Icon(
-                      Icons.brightness_4_outlined,
-                      color: Theme.of(context).cardColor,
-                    ),
-                    onPressed: () => AppCubit.get(context).changeAppThememode(),
-                  ),
-                ),
+                // Align(
+                //   alignment: Alignment.topLeft,
+                //   child: IconButton(
+                //     icon: Icon(
+                //       Icons.brightness_4_outlined,
+                //       color: Theme.of(context).cardColor,
+                //     ),
+                //     onPressed: () => AppCubit.get(context).changeAppThememode(),
+                //   ),
+                // ),
                 Text(
                   LocalKeys.SETTING.tr(),
                   style: Theme.of(context).textTheme.bodyText1,
@@ -52,8 +51,8 @@ class _SettingBodyState extends State<SettingBody> {
                   child: ProfileMenu(
                     text: LocalKeys.EDITPASSWORD.tr(),
                     icon: "assets/icons/Lock.svg",
-                    press: () =>
-                        Navigator.pushNamed(context, NewPassword.routeName),
+                    press: () => Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => NewPassword())),
                   ),
                 ),
                 Center(

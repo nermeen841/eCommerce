@@ -21,15 +21,12 @@ class Body extends StatelessWidget {
                 horizontal: getProportionateScreenWidth(20)),
             child: Column(
               children: [
-                SizedBox(height: SizeConfig.screenHeight * 0.04),
-                Text(
-                  LocalKeys.FORGETPASSWORDTITLE.tr(),
-                  style: TextStyle(
-                    fontSize: getProportionateScreenWidth(28),
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                // SizedBox(height: SizeConfig.screenHeight * 0.04),
+                Text(LocalKeys.FORGETPASSWORDTITLE.tr(),
+                    style: Theme.of(context).textTheme.bodyText1.copyWith(
+                          fontSize: getProportionateScreenWidth(28),
+                          fontWeight: FontWeight.bold,
+                        )),
                 Text(
                   LocalKeys.FORGETPASSINTRO.tr(),
                   textAlign: TextAlign.center,
@@ -102,10 +99,11 @@ class _ForgotPassFormState extends State<ForgotPassForm> {
           FormError(errors: errors),
           SizedBox(height: SizeConfig.screenHeight * 0.1),
           DefaultButton(
-            text: LocalKeys.CONTINUEBUTTON.tr(),
+            text: LocalKeys.CONTBUTTON.tr(),
             press: () {
               if (_formKey.currentState.validate()) {
-                Navigator.pushNamed(context, NewPassword.routeName);
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => NewPassword()));
               }
             },
           ),

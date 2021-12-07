@@ -57,7 +57,7 @@ class _UserLocationBarState extends State<UserLocationBar> {
             margin: EdgeInsets.only(left: 5, right: 5),
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
-              color: kPrimaryColor,
+              color: Theme.of(context).scaffoldBackgroundColor,
               // HexColor("#00224B"),
               borderRadius: BorderRadius.circular(30),
               boxShadow: [
@@ -75,17 +75,49 @@ class _UserLocationBarState extends State<UserLocationBar> {
                   "assets/icons/location-pin.svg",
                   width: 20,
                   height: 20,
-                  color: Colors.white,
+                  color: kPrimaryColor,
                 ),
                 spaceW(5),
                 SizedBox(
-                  width: 300,
+                  width: 280,
                   child: Text(currentAddress,
                       maxLines: 2,
                       style: headingStyle.copyWith(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
-                          color: Colors.white)),
+                          color: kPrimaryColor)),
+                ),
+                InkWell(
+                  child: Icon(
+                    Icons.arrow_circle_down_outlined,
+                    color: kPrimaryColor,
+                  ),
+                  onTap: () {
+                    homeBottomSheet(
+                        context: context,
+                        child: ListView.separated(
+                            shrinkWrap: true,
+                            primary: true,
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 10, horizontal: 10),
+                                child: Text(
+                                  currentAddress,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyText1
+                                      .copyWith(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 16),
+                                ),
+                              );
+                            },
+                            separatorBuilder: (context, index) {
+                              return Divider();
+                            },
+                            itemCount: 3));
+                  },
                 ),
               ],
             ),

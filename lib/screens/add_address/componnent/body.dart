@@ -6,7 +6,7 @@ import 'package:shop_app/components/default_button.dart';
 import 'package:shop_app/generated/local_keys.dart';
 import 'package:shop_app/screens/UserAddress/userAddress.dart';
 import 'package:shop_app/screens/add_address/address_provider.dart';
-import 'package:shop_app/screens/home/components/user_location_container.dart';
+import 'package:shop_app/components/user_location_container.dart';
 import 'package:shop_app/size_config.dart';
 import 'package:easy_localization/easy_localization.dart';
 import '../address_card.dart';

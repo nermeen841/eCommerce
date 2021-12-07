@@ -8,8 +8,8 @@ class SignUpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          // title: Text("Sign Up"),
-          ),
+        toolbarHeight: 0.0,
+      ),
       body: Body(),
     );
   }

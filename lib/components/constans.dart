@@ -42,6 +42,7 @@ spaceW(double width) {
 ////////////////////////
 homeBottomSheet({BuildContext context, Widget child, ShapeBorder shapeBorder}) {
   return showModalBottomSheet(
+    isScrollControlled: true,
     backgroundColor: Theme.of(context).primaryColor,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.only(
@@ -49,7 +50,8 @@ homeBottomSheet({BuildContext context, Widget child, ShapeBorder shapeBorder}) {
     ),
     isDismissible: true,
     context: context,
-    builder: (context) => child,
+    builder: (context) =>
+        Padding(padding: MediaQuery.of(context).viewInsets, child: child),
   );
 }
 

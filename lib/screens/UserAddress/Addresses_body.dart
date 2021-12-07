@@ -35,8 +35,10 @@ class AddressesBody extends StatelessWidget {
                   color: Theme.of(context).scaffoldBackgroundColor,
                   child: DefaultButton(
                     text: LocalKeys.ADDNEWADDRESS.tr(),
-                    press: () =>
-                        Navigator.pushNamed(context, AddNewAddress.routeName),
+                    press: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => AddNewAddress())),
                   ),
                 ),
               )

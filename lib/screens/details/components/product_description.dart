@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shop_app/components/PageTransitionAnimation.dart';
+import 'package:shop_app/components/constans.dart';
+import 'package:shop_app/generated/local_keys.dart';
 import 'package:shop_app/models/Product.dart';
-
+import 'package:shop_app/screens/more_detail/more_detail.dart';
+import 'package:easy_localization/easy_localization.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
 
 class ProductDescription extends StatelessWidget {
-  const ProductDescription({
+  ProductDescription({
     Key key,
     @required this.product,
     this.pressOnSeeMore,
@@ -29,6 +33,83 @@ class ProductDescription extends StatelessWidget {
                 .textTheme
                 .bodyText1
                 .copyWith(fontSize: 18, fontWeight: FontWeight.w500),
+          ),
+        ),
+        Padding(
+          padding:
+              EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+          child: Text(
+            "${LocalKeys.BRAND.tr()} : Techno-Tech",
+            style: Theme.of(context)
+                .textTheme
+                .bodyText1
+                .copyWith(fontSize: 14, fontWeight: FontWeight.w500),
+          ),
+        ),
+        Padding(
+          padding:
+              EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+          child: Text(
+            "${LocalKeys.SELLER.tr()} : B-TECH",
+            style: Theme.of(context)
+                .textTheme
+                .bodyText1
+                .copyWith(fontSize: 14, fontWeight: FontWeight.w500),
+          ),
+        ),
+        Padding(
+          padding:
+              EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+          child: Text(
+            "${LocalKeys.NOTE.tr()} : -----------",
+            style: Theme.of(context)
+                .textTheme
+                .bodyText1
+                .copyWith(fontSize: 14, fontWeight: FontWeight.w500),
+          ),
+        ),
+        spaceH(10),
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 5),
+          decoration: BoxDecoration(
+            color: Theme.of(context).primaryColor,
+            borderRadius: BorderRadius.circular(14),
+          ),
+          child: Row(
+            children: [
+              Text(
+                "${product.rating}",
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              const SizedBox(width: 5),
+              SvgPicture.asset("assets/icons/Star Icon.svg"),
+            ],
+          ),
+        ),
+        spaceH(10),
+        Padding(
+          padding:
+              EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(10)),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Text(
+                "${product.price} \$",
+                style: Theme.of(context).textTheme.bodyText1.copyWith(
+                    fontWeight: FontWeight.bold, color: kPrimaryColor),
+              ),
+              spaceW(10),
+              Text(
+                "${product.price} \$",
+                style: Theme.of(context).textTheme.bodyText1.copyWith(
+                    decoration: TextDecoration.lineThrough,
+                    fontWeight: FontWeight.w400),
+              ),
+            ],
           ),
         ),
         Align(
@@ -68,11 +149,12 @@ class ProductDescription extends StatelessWidget {
             vertical: 10,
           ),
           child: GestureDetector(
-            onTap: () {},
+            onTap: () =>
+                Navigator.push(context, SizeTransition3(MoreDetailScreen())),
             child: Row(
               children: [
                 Text(
-                  "See More Detail",
+                  LocalKeys.MOREDETAIL.tr(),
                   style: TextStyle(
                       fontWeight: FontWeight.w600, color: kPrimaryColor),
                 ),

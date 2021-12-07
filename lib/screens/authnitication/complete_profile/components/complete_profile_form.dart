@@ -54,7 +54,8 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
             text: LocalKeys.CONTINUEBUTTON.tr(),
             press: () {
               if (_formKey.currentState.validate()) {
-                Navigator.pushNamed(context, OtpScreen.routeName);
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => OtpScreen()));
               }
             },
           ),

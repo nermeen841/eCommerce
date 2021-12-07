@@ -115,4 +115,27 @@ abstract class LocalKeys {
   static const FLATERROR = "flat_error";
   static const FLOOREMTY = "floor_empty";
   static const BUILDNUMERROR = "buildNum_error";
+  static const SPCIFICATION = "spec";
+  static const DESCRIPTION = "desc";
+  static const FEATURES = "features";
+  static const COMMENT = "comment";
+  static const REVIEW = "review";
+  static const SORTBY = "sort_by";
+  static const COMPITABLE = "compitable";
+  static const RECENTLYARRIVED = "recently_arrived";
+  static const MOSTCOMMON = "most_common";
+  static const TOPRATED = "top_reted";
+  static const LOWHIGH = "low_high";
+  static const HIGHLOW = "high_low";
+  static const PRODUCTS = "products";
+  static const CANCEL = "cancel";
+  static const FEATURED = "featured";
+  static const POPULAR = "popular";
+  static const LATEST = "latest";
+  static const SECTIONS = "sections";
+  static const MOREDETAIL = "more_detail";
+  static const BRAND = "brand";
+  static const SELLER = "seller";
+  static const NOTE = "note";
+  static const CONTBUTTON = "Continue";
 }

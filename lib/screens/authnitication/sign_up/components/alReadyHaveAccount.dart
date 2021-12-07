@@ -21,7 +21,8 @@ class _AlreadyHaveAccountState extends State<AlreadyHaveAccount> {
           style: TextStyle(fontSize: getProportionateScreenWidth(16)),
         ),
         GestureDetector(
-          onTap: () => Navigator.pushNamed(context, SignInScreen.routeName),
+          onTap: () => Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => SignInScreen())),
           child: Text(
             LocalKeys.SIGNIN.tr(),
             style: TextStyle(

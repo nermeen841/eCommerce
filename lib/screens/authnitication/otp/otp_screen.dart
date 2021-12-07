@@ -9,7 +9,9 @@ class OtpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        toolbarHeight: 0.0,
+      ),
       body: Body(),
     );
   }

@@ -16,10 +16,13 @@ class Body extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: SizeConfig.screenHeight * 0.05),
+              // SizedBox(height: SizeConfig.screenHeight * 0.05),
               Text(
                 LocalKeys.OTPVERIFICATION.tr(),
-                style: headingStyle,
+                style: Theme.of(context).textTheme.bodyText1.copyWith(
+                      fontSize: getProportionateScreenWidth(30),
+                      fontWeight: FontWeight.bold,
+                    ),
               ),
               Text("${LocalKeys.OTPMESSAGE.tr()} +1 898 860 ***"),
               buildTimer(),

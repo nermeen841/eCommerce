@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shop_app/components/constans.dart';
 import 'package:shop_app/components/default_button.dart';
 import 'package:shop_app/generated/local_keys.dart';
@@ -8,9 +9,9 @@ import 'package:shop_app/screens/Notification/notificationScreen.dart';
 import 'package:shop_app/screens/UserAddress/userAddress.dart';
 import 'package:shop_app/screens/helpCenter/help_center_screen.dart';
 import 'package:shop_app/screens/my_account/my_accountScreen.dart';
-import 'package:shop_app/screens/onBoarding/onBoarding.dart';
 import 'package:shop_app/screens/order/order_screen.dart';
 import 'package:shop_app/screens/setting_screen/setting_screen.dart';
+import 'package:shop_app/screens/splash/splash_screen.dart';
 import 'package:shop_app/size_config.dart';
 import 'package:easy_localization/easy_localization.dart';
 import '../../../constants.dart';
@@ -54,13 +55,14 @@ class _BodyState extends State<Body> {
           ProfileMenu(
             text: LocalKeys.MYACCOUNT.tr(),
             icon: "assets/icons/User Icon.svg",
-            press: () =>
-                Navigator.pushNamed(context, MyAccountScreen.routeName),
+            press: () => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => MyAccountScreen())),
           ),
           ProfileMenu(
             text: LocalKeys.MYORDERS.tr(),
             icon: "assets/icons/shopping-bag.svg",
-            press: () => Navigator.pushNamed(context, OrderScreen.routeName),
+            press: () => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => OrderScreen())),
           ),
           ProfileMenu(
             text: LocalKeys.MYADDRESS.tr(),
@@ -87,8 +89,10 @@ class _BodyState extends State<Body> {
                         spaceH(20),
                         DefaultButton(
                           text: LocalKeys.ADDNEWADDRESS.tr(),
-                          press: () => Navigator.pushNamed(
-                              context, UserAddressScreen.routeName),
+                          press: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => UserAddressScreen())),
                         )
                       ],
                     ),
@@ -98,8 +102,8 @@ class _BodyState extends State<Body> {
           ProfileMenu(
             text: LocalKeys.NOTIFICATION.tr(),
             icon: "assets/icons/Bell.svg",
-            press: () =>
-                Navigator.pushNamed(context, NotificationScreen.routeName),
+            press: () => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => NotificationScreen())),
           ),
           ProfileMenu(
               text: LocalKeys.SETTING.tr(),
@@ -144,19 +148,25 @@ class _BodyState extends State<Body> {
           ProfileMenu(
             text: LocalKeys.HELPCENTER.tr(),
             icon: "assets/icons/Question mark.svg",
-            press: () =>
-                Navigator.pushNamed(context, HelpCenterScreen.routeName),
+            press: () => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => HelpCenterScreen())),
           ),
           ProfileMenu(
             text: LocalKeys.ABOUTUS.tr(),
             icon: "assets/icons/Question mark.svg",
-            press: () => Navigator.pushNamed(context, AboutUsScreen.routeName),
+            press: () => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => AboutUsScreen())),
           ),
           ProfileMenu(
             text: LocalKeys.LOGOUT.tr(),
             icon: "assets/icons/Log out.svg",
-            press: () {
-              Navigator.popAndPushNamed(context, OnBoardingScreen.routeName);
+            press: () async {
+              SharedPreferences _sp = await SharedPreferences.getInstance();
+              _sp.clear();
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => MyCustomSplashScreen()));
             },
           ),
         ],

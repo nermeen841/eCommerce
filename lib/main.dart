@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app/CacheHelper/mySharedPreference.dart';
-import 'package:shop_app/routes.dart';
 import 'package:shop_app/screens/add_address/address_provider.dart';
 import 'package:shop_app/screens/app_cubit/appState.dart';
 import 'package:shop_app/screens/app_cubit/cubit.dart';
@@ -104,11 +103,11 @@ class _MyAppState extends State<MyApp> {
             debugShowCheckedModeBanner: false,
             darkTheme: darkTheme(),
             theme: theme(),
-            themeMode:
-                AppCubit.get(context).isDark ? ThemeMode.dark : ThemeMode.light,
-            //  home: HomePage(),
-            initialRoute: SplashScreen.routeName,
-            routes: routes,
+            themeMode: ThemeMode.light,
+            // AppCubit.get(context).isDark ? ThemeMode.dark : ThemeMode.light,
+            home: MyCustomSplashScreen(),
+            // initialRoute: SplashScreen.routeName,
+            // routes: routes,
           );
         },
       ),

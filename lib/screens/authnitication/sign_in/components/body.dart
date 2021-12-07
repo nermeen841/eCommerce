@@ -18,7 +18,7 @@ class Body extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(height: SizeConfig.screenHeight * 0.04),
+                // SizedBox(height: SizeConfig.screenHeight * 0.04),
                 Text(
                   LocalKeys.LOGINWELCOME.tr(),
                   style: TextStyle(
